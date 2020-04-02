@@ -7,7 +7,15 @@
 	<link rel="stylesheet" href="vistas/css/main.css">
 </head>
 <body>
+		<?php 
+			require_once "./controladores/vistasControlador.php";
+			$vt = new vistasControlador();
+			$vistasR=$vt->obtener_vistas_controlador();
 
+			if ($vistasR=="login"):
+				require_once "./vistas/contenidos/login-view.php";
+			else:
+		?>
 		<!-- SideBar -->
     <?php include "vistas/modulos/navbarlateral.php"; ?>
 
@@ -18,8 +26,10 @@
 			<?php include "vistas/modulos/navbar.php"; ?>
 			
 			<!-- Content view -->
+			<?php require_once $vistasR; ?>
 
 		</section>
+			<?php endif; ?>
 
 	<!--====== Scripts TRANSFERIDO -->
     <?php include "vistas/modulos/script.php"; ?>
